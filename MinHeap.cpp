@@ -1,53 +1,60 @@
 #include "MinHeap.h"
 
-Node::Node()
-	: data(-1)
-{
-	left = 0;
-	right = 0;
-}
-
-
-Node::Node(Node* l, Node* r, int dat)
-	: left(l), right(r), data(dat)
-{
-
-}
-
-
-
 
 MinHeap::MinHeap()
 {
-	root = 0;
+	heap = 0;
+	curr = -1;
+	siz = 0;
+}
+
+
+MinHeap::MinHeap(int sz)
+{
+	siz = sz * 2;
+	heap = new int[siz];
+	for (int i = 0; i < siz; ++i)
+	{
+		heap[i] = 0;
+	}
+	curr = 0;
 }
 
 
 MinHeap::~MinHeap()
 {
-	//no
+	delete[] heap;
+	curr = -1;
+	siz = 0;
 }
 
 
 void MinHeap::insert(int val)
 {
-	Node* temp = root;
-	Node* temp2 = temp;
-	if (temp != 0)
+	if (siz != 0)
 	{
-		Node* newNode;
-		while (temp != 0)
+		curr++;
+		int node = curr;
+		while (heap[node / 2] > val)
 		{
-			
+			heap[node] = heap[node / 2];
+			node = node / 2;
 		}
-		
+		heap[node] = val;
 	}
-	else
-		root = new Node(0, 0, val);
 }
 
 
 void MinHeap::removeMin()
 {
 
+}
+
+
+void MinHeap::debugprint()
+{
+	for (int i = 0; i < siz; ++i)
+	{
+		cout << heap[i] << endl;
+	}
 }

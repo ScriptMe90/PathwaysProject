@@ -1,26 +1,24 @@
-class Node
-{
-	Node* left;
-	Node* right;
-	int data;
-	
-public:
-	Node();
-	Node(Node* l, Node* r, int dat);
-	friend class MinHeap;
-};
+#ifndef MINHEAP_H
+#define MINHEAP_H
+
+#include <iostream>
+using namespace std;
 
 class MinHeap
 {
 public:
 	MinHeap();
+	MinHeap(int sz);
 	~MinHeap();
 	
 	void insert(int val);
 	void removeMin();
+
+	void debugprint();
 private:
-
-	Node* findNext();
-
-	Node* root;
+	int siz;
+	int curr;
+	int* heap;
 };
+
+#endif
