@@ -4,9 +4,9 @@
 Pathing::Pathing()
 {
 	string line;
-	nodeCount = 14; //for testing purposes
+	nodeCount = 6; //for testing purposes
 
-	heap = new MinHeap(nodeCount);
+	heap = new MinHeap(nodeCount + 1);
 
 	weights = new int*[nodeCount];
 
@@ -40,7 +40,7 @@ Pathing::Pathing()
 	for (int i = 0; i < nodeCount; ++i)
 	{
 		nodes[i].id = i;
-		nodes[i].dist = 0;
+		nodes[i].dist = numeric_limits<int>::max() / 2;
 		nodes[i].visited = false;
 	}
 }
@@ -68,13 +68,14 @@ void Pathing::calculatePath(int pointA, int pointB)
 	for (int i = 0; i < nodeCount; ++i)
 	{
 		Point min = heap->removeMin();
-		//cout << "current min id: " << min.id << " current min dist: " << min.dist << " current min visited: " << min.visited << endl;
 		//cout << "outer i: " << i << endl;
 		while (min.visited)  //if the node has already been visited, discard it.
 		{
 			min = heap->removeMin();
 		}
 		min.visited = true;
+
+		//cout << "current min id: " << min.id << " current min dist: " << min.dist << endl;
 
 		for (int j = 0; j < nodeCount; ++j)
 		{
@@ -90,11 +91,21 @@ void Pathing::calculatePath(int pointA, int pointB)
 					if (nodes[j].dist > nodeweight)
 					{
 						nodes[j].dist = nodeweight; //update weight
-						shortestPath[i] = nodes[j].id;
+						if (shortestPath[i] == 0)
+						{
+							shortestPath[i] = nodes[j].id;
+						}
+						
 						cout << "id: " << nodes[j].id << endl;
 						cout << "nodeweight after replace: " << nodeweight << endl;
 					}
-					
+					else
+					{
+						shortestPath[i] = nodes[j].id;
+						//cout << "id: " << nodes[j].id << endl;
+						//cout << "nodeweight after no replace: " << nodeweight << endl;
+					}
+					/*
 					else
 					{
 						
@@ -102,8 +113,7 @@ void Pathing::calculatePath(int pointA, int pointB)
 						shortestPath[i] = nodes[j].id;
 						cout << "id: " << nodes[j].id << endl;
 						cout << "nodeweight after no replace: " << nodeweight << endl;
-					}
-	
+					}*/
 				}
 				heap->insert(nodes[j]);		//push new weight onto heap
 			}

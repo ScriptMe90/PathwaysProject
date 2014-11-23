@@ -7,7 +7,7 @@ int main()
 	return pan.run();*/
 	Pathing p;
 
-	p.calculatePath(0, 13);
+	p.calculatePath(0, 5);
 	p.displayPath();
 
 	system("PAUSE");

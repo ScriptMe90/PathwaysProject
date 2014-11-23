@@ -37,7 +37,7 @@ public:
 	~MinHeap();
 	
 	void insert(Point& val);
-	Point& removeMin();
+	Point removeMin();
 
 	void debugprint();
 private:

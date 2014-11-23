@@ -16,7 +16,7 @@ MinHeap::MinHeap(int sz)
 	for (int i = 0; i < siz; ++i)
 	{
 		heap[i] = new Point;
-		heap[i]->dist = 0;//numeric_limits<int>::max();
+		heap[i]->dist = 0;
 		heap[i]->id = 0;
 		heap[i]->visited = false;
 	}
@@ -57,7 +57,7 @@ void MinHeap::insert(Point& val)
 }
 
 
-Point& MinHeap::removeMin()
+Point MinHeap::removeMin()
 {
 	Point result;
 	result.dist = 0;
