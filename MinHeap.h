@@ -2,7 +2,32 @@
 #define MINHEAP_H
 
 #include <iostream>
+#include <limits>
 using namespace std;
+
+/*class Point
+{
+public:
+	Point();
+	Point(int dat);
+	int getData();
+	void setData(int dat);
+	bool isKnown();
+private:
+	Point* next;
+	int data;
+	bool known;
+};*/
+
+enum {CHINA, US, GERMANY, FRANCE, RUSSIA, BRAZIL, MEXICO, ICELAND, AUSTRALIA};
+
+struct Point
+{
+	int id;
+	bool visited;
+	int dist;
+};
+
 
 class MinHeap
 {
@@ -11,14 +36,15 @@ public:
 	MinHeap(int sz);
 	~MinHeap();
 	
-	void insert(int val);
-	void removeMin();
+	void insert(Point& val);
+	Point& removeMin();
 
 	void debugprint();
 private:
 	int siz;
+	//Point* curr;
 	int curr;
-	int* heap;
+	Point** heap;
 };
 
 #endif

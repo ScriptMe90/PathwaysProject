@@ -128,45 +128,19 @@ public:
 		}
 		else
 		{
-			if (m_head->data < item)
+			Node<T>* curr = m_head;
+			Node<T>* prev = m_head;
+			while (curr != NULL)
 			{
-				Node<T>* curr = m_head->next;
-				Node<T>* prev = m_head;
-				while (curr != NULL)
+				if (curr->data == item)
 				{
-					if (curr->data < item)
-					{
-						curr = curr->next;
-						prev = prev->next;
-					}
-					else if (curr->data > item)
-					{
-						prev->next = it;
-						it->next = curr;
-						return true;
-					}
-					else if (curr->data == item)
-					{
-						//std::cout << "Duplicate!!" << std::endl;
-						return false;
-					}
+					//std::cout << "Duplicate!!" << std::endl;
+					return false;
 				}
-
-				prev->next = it;
-				it->next = NULL;
-				return true;
+				curr = curr->next;
 			}
-			else if (m_head->data > item)
-			{
-				it->next = m_head;
-				m_head = it;
-				return true;
-			}
-			else
-			{
-				//std::cout << "Duplicate!!" << std::endl;
-				return false;
-			}
+			m_head = it;
+			m_head->next = prev;
 		}
 	}
 
@@ -245,8 +219,9 @@ public:
 		while (temp != NULL)
 		{
 			/*
-			std::cout << temp->data << std::endl;
-			temp = temp->next;*/
+			std::cout << temp->data << std::endl;*/
+			cout << temp->data;
+			temp = temp->next;
 		}
 	}
 
