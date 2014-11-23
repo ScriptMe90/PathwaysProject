@@ -5,6 +5,7 @@
 #include <fstream>
 #include <limits>
 #include "LinkedList.h"
+#include <iostream>
 using namespace std;
 #include <vector>
 #include "MinHeap.h"
