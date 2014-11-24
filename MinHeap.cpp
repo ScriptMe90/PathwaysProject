@@ -11,7 +11,7 @@ MinHeap::MinHeap()
 
 MinHeap::MinHeap(int sz)
 {
-	siz = sz;
+	siz = sz * 2;
 	heap = new Point*[siz];
 	for (int i = 0; i < siz; ++i)
 	{
@@ -98,6 +98,11 @@ Point MinHeap::removeMin()
 	*heap[hole] = temp;
 
 	return result;
+}
+
+bool MinHeap::empty()
+{
+	return curr > 0;
 }
 
 

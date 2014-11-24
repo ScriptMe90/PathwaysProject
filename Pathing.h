@@ -13,9 +13,9 @@ using namespace std;
 class Pathing
 {
 public:
-	Pathing();
+	Pathing(int n);
 	~Pathing();
-	//vector<int> shortest;
+	
 
 	void calculatePath(int pointA, int pointB);
 
@@ -24,12 +24,11 @@ public:
 	LinkedList<int>* getPath();
 
 private:
-	void storePath();
+	vector<int> shortest;
 	int nodeCount;
 	Point* nodes;
 	int** weights;
 	MinHeap* heap;
-	int* shortestPath;
 };
 
 #endif

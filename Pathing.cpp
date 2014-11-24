@@ -1,30 +1,22 @@
 #include "Pathing.h"
 
 
-Pathing::Pathing()
+Pathing::Pathing(int n)
 {
 	string line;
-	nodeCount = 6; //for testing purposes
+	nodeCount = n;
 
 	heap = new MinHeap(nodeCount + 1);
 
 	weights = new int*[nodeCount];
 
-	shortestPath = new int[nodeCount];
-
 	for (int i = 0; i < nodeCount; ++i)
-	{
 		weights[i] = new int[nodeCount];
-		shortestPath[i] = 0;
-	}
 
 	for (int i = 0; i < nodeCount; ++i)
-	{
 		for (int j = 0; j < nodeCount; ++j)
-		{
 			weights[i][j] = 0;
-		}
-	}
+
 	
 	ifstream fin("data.txt");
 	int ind1, ind2, w;
@@ -53,7 +45,6 @@ Pathing::~Pathing()
 	
 	delete[] weights;
 	delete heap;
-	delete shortestPath;
 	nodeCount = 0;
 }
 
@@ -63,7 +54,6 @@ void Pathing::calculatePath(int pointA, int pointB)
 	//cout << pointB << " ";
 	nodes[pointA].dist = 0;
 	heap->insert(nodes[pointA]);
-	shortestPath[pointA] = pointA;
 
 	for (int i = 0; i < nodeCount; ++i)
 	{
@@ -91,53 +81,63 @@ void Pathing::calculatePath(int pointA, int pointB)
 					if (nodes[j].dist > nodeweight)
 					{
 						nodes[j].dist = nodeweight; //update weight
-						if (shortestPath[i] == 0)
-						{
-							shortestPath[i] = nodes[j].id;
-						}
-						
 						cout << "id: " << nodes[j].id << endl;
 						cout << "nodeweight after replace: " << nodeweight << endl;
 					}
 					else
 					{
-						shortestPath[i] = nodes[j].id;
-						//cout << "id: " << nodes[j].id << endl;
-						//cout << "nodeweight after no replace: " << nodeweight << endl;
-					}
-					/*
-					else
-					{
-						
-						nodes[j].dist = nodeweight;
-						shortestPath[i] = nodes[j].id;
 						cout << "id: " << nodes[j].id << endl;
 						cout << "nodeweight after no replace: " << nodeweight << endl;
-					}*/
+					}
 				}
 				heap->insert(nodes[j]);		//push new weight onto heap
 			}
-			//else
-				//cout << "Skipped inner loop!" << endl;
 		}
 	}
 
-	/*
-		for all adjacent nodes to curr
-			if smallest
-				push weight onto heap
-				update current
-				update pathing table */
+	for (int i = 0; i < nodeCount; ++i)
+	{
+		cout << "Node id: " << nodes[i].id << endl;
+		cout << "Node dist: " << nodes[i].dist << endl << endl;
+	}
+	
+
+	//finding path based on node information
+	int smallest = nodes[pointB].id;
+	shortest.push_back(nodes[pointB].id);
+	int curr = pointB;
+
+	while (curr != pointA)
+	{
+		int j;
+		for (j = nodeCount - 1; j >= 0; --j)
+		{
+			if (weights[j][curr] > 0)
+			{
+				int check;
+				if (nodes[j].id == pointA)
+					check = pointA;
+				else
+					check = nodes[j].dist;
+
+				if (check + weights[j][curr] == nodes[curr].dist)
+					smallest = nodes[j].id;	
+			}
+		}
+		shortest.push_back(nodes[smallest].id);
+		curr = smallest;
+	}
+	shortest.push_back(pointA);
 }	
 
 
 void Pathing::displayPath()
 {
-	for (int i = 0; i < nodeCount; ++i)
+	for (int i = 0; i < shortest.size(); ++i)
 	{
-		if (shortestPath[i] != 0)
+		if (shortest[i] != 0)
 		{
-			cout << shortestPath[i] << " ";
+			cout << shortest[i] << " ";
 		}
 	}
 }
