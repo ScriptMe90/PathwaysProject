@@ -1,8 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include <iostream>
-using namespace std;
 template <typename T>
 class LinkedList;
 
