@@ -5,22 +5,6 @@
 #include <limits>
 using namespace std;
 
-/*class Point
-{
-public:
-	Point();
-	Point(int dat);
-	int getData();
-	void setData(int dat);
-	bool isKnown();
-private:
-	Point* next;
-	int data;
-	bool known;
-};*/
-
-enum {CHINA, US, GERMANY, FRANCE, RUSSIA, BRAZIL, MEXICO, ICELAND, AUSTRALIA};
-
 struct Point
 {
 	int id;
