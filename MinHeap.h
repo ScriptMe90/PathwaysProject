@@ -23,12 +23,9 @@ public:
 	void insert(Point& val);
 	Point removeMin();
 
-	bool empty();
-
 	void debugprint();
 private:
 	int siz;
-	//Point* curr;
 	int curr;
 	Point** heap;
 };

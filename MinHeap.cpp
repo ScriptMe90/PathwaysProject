@@ -100,10 +100,6 @@ Point MinHeap::removeMin()
 	return result;
 }
 
-bool MinHeap::empty()
-{
-	return curr > 0;
-}
 
 
 void MinHeap::debugprint()

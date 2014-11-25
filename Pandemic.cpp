@@ -9,7 +9,7 @@ Pandemic::Pandemic()
 
 	m_wndSurf = SDL_GetWindowSurface(m_wnd);
 	m_graph = SDL_LoadBMP("Resources/world.bmp");
-	m_p->calculatePath(0, 6);
+	m_p->calculatePath(0, 8);
 	m_path = m_p->getPath();
 	m_currNode = m_path.size() - 2;
 }

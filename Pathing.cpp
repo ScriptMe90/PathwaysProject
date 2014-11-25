@@ -20,7 +20,6 @@ Pathing::Pathing(int n)
 	
 	ifstream fin("data.txt");
 	int ind1, ind2, w;
-	//fin >> ind1 >> ind2 >> w;
 	while (fin.good())
 	{
 		fin >> ind1 >> ind2 >> w;
@@ -69,37 +68,19 @@ void Pathing::calculatePath(int pointA, int pointB)
 
 		for (int j = 0; j < nodeCount; ++j)
 		{
-			//cout << "weights[min.id][i] is " << weights[min.id][i] << endl;
-			//cout << "i is: " << i << endl;
 			if (weights[min.id][j] > 0) //testing current node's connections
 			{
 				int nodeweight = nodes[min.id].dist + weights[min.id][j];
 
-				if (!nodes[j].visited) //if the node hasn't been seen before
-				{ //then check to see if the distance is smaller
+				if (!nodes[j].visited)	//if the node hasn't been seen before
+				{						//then check to see if the distance is smaller
 					if (nodes[j].dist > nodeweight)
-					{
 						nodes[j].dist = nodeweight; //update weight
-						//cout << "id: " << nodes[j].id << endl;
-						//cout << "nodeweight after replace: " << nodeweight << endl;
-					}
-					else
-					{
-						//cout << "id: " << nodes[j].id << endl;
-						//cout << "nodeweight after no replace: " << nodeweight << endl;
-					}
 				}
 				heap->insert(nodes[j]);		//push new weight onto heap
 			}
 		}
 	}
-	/*
-	for (int i = 0; i < nodeCount; ++i)
-	{
-		cout << "Node id: " << nodes[i].id << endl;
-		cout << "Node dist: " << nodes[i].dist << endl << endl;
-	}*/
-	
 
 	//finding path based on node information
 	int smallest = nodes[pointB].id;

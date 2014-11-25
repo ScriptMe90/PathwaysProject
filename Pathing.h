@@ -1,7 +1,6 @@
 #ifndef PATHING_H
 #define PATHING_H
 #include <string>
-#include <sstream>
 #include <fstream>
 #include <limits>
 using namespace std;

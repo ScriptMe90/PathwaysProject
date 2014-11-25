@@ -19,15 +19,12 @@ public:
 	void drawPaths();
 	void drawGraph();
 
-	void listShortest();
-
 private:
 	Pathing* m_p;
 	SDL_Surface* m_wndSurf;
 	SDL_Surface* m_graph;
 	SDL_Window* m_wnd;
 	vector<int> m_path;
-	bool Init();
 	bool m_running;
 	int m_currNode;
 
