@@ -1,3 +1,9 @@
+/********************************************************************
+Name:       Pandemic.h
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Formal declaration of the Pandemic class.
+********************************************************************/
+
 #ifndef PANDEMIC_H
 #define PANDEMIC_H
 #include <iostream>
@@ -5,7 +11,6 @@
 #include <Windows.h>
 #include "SDL.h"
 #include "Pathing.h"
-#include "Flag.h"
 
 enum { CHINA = 0, GERMANY, RUSSIA, AUSTRALIA, FRANCE, ICELAND, BRAZIL, MEXICO, US};
 class Pandemic

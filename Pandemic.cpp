@@ -1,5 +1,16 @@
+/********************************************************************
+Name:       Pandemic.cpp
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Holds and Implements all methods of Pandemic.h
+********************************************************************/
+
 #include "Pandemic.h"
 
+/********************************************************************
+Name:       Pandemic()
+Author(s):  Justin Brumley, Cory Feliciano.
+Purpose:    Front end
+********************************************************************/
 Pandemic::Pandemic()
 {
 	m_running = true;
@@ -15,6 +26,11 @@ Pandemic::Pandemic()
 }
 
 
+/********************************************************************
+Name:       ~Pandemic()
+Author(s):  Joshua Ford, Justin Brumley.
+Purpose:    This is the destructor method.
+********************************************************************/
 Pandemic::~Pandemic()
 {
 	delete m_p;
@@ -23,6 +39,11 @@ Pandemic::~Pandemic()
 }
 
 
+/********************************************************************
+Name:       Execute()
+Author(s):  Cory Feliciano, Justin Brumley
+Purpose:    Executes the pathing
+********************************************************************/
 int Pandemic::Execute()
 {
 	while (m_running)
@@ -50,6 +71,11 @@ int Pandemic::Execute()
 }
 
 
+/********************************************************************
+Name:       drawPaths()
+Author(s):  Justin Brumley, Cory Feliciano
+Purpose:    Assigns a country to the nodes for the shortest path.
+********************************************************************/
 void Pandemic::drawPaths()
 {
 	if (m_currNode >= 0)
@@ -92,6 +118,11 @@ void Pandemic::drawPaths()
 }
 
 
+/********************************************************************
+Name:       drawGraph()
+Author(s):  Justin Brumley
+Purpose:    This method draws the graph that was created.
+********************************************************************/
 void Pandemic::drawGraph()
 {
 	SDL_BlitSurface(m_graph, NULL, m_wndSurf, NULL);

@@ -1,6 +1,15 @@
+/********************************************************************
+Name:       MinHeap.cpp
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Holds and implements all methods from MinHeap.h
+********************************************************************/
 #include "MinHeap.h"
 
-
+/********************************************************************
+Name:       MinHeap()
+Author(s):  Justin Brumley.
+Purpose:    Acts as the Constructor for MinHeap
+********************************************************************/
 MinHeap::MinHeap()
 {
 	heap = 0;
@@ -9,6 +18,11 @@ MinHeap::MinHeap()
 }
 
 
+/********************************************************************
+Name:       MinHeap(int sz)
+Author(s):  Joshua Ford.
+Purpose:    Acts as the Copy constructor for MinHeap
+********************************************************************/
 MinHeap::MinHeap(int sz)
 {
 	siz = sz * 2;
@@ -24,6 +38,11 @@ MinHeap::MinHeap(int sz)
 }
 
 
+/********************************************************************
+Name:       ~MinHeap()
+Author(s):  Justin Brumley
+Purpose:    Acts as the Destructor for MinHeap
+********************************************************************/
 MinHeap::~MinHeap()
 {
 	for (int i = 0; i < siz; ++i)
@@ -38,6 +57,11 @@ MinHeap::~MinHeap()
 }
 
 
+/********************************************************************
+Name:       insert(Point& val)
+Author(s):  Justin Brumley, Cory Feliciano.
+Purpose:    Inserts a value into MinHeap
+********************************************************************/
 void MinHeap::insert(Point& val)
 {
 	if (siz != 0 && curr <= siz - 1)
@@ -57,6 +81,12 @@ void MinHeap::insert(Point& val)
 }
 
 
+/********************************************************************
+Name:       removeMin()
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Removes the Minimum value (value at the root) from the
+MinHeap.
+********************************************************************/
 Point MinHeap::removeMin()
 {
 	Point result;
@@ -71,7 +101,7 @@ Point MinHeap::removeMin()
 	result = *heap[1];
 	*heap[1] = *heap[curr--];
 	heap[curr + 1]->dist = 0;
-	//////////////////////////////////////////////////
+	
 
 	int child;
 	int hole = 1;
@@ -101,7 +131,11 @@ Point MinHeap::removeMin()
 }
 
 
-
+/********************************************************************
+Name:       debugprint()
+Author(s):  Joshua Ford, Justin Brumley
+Purpose:    Print out values within the heap for debugging purposes.
+********************************************************************/
 void MinHeap::debugprint()
 {
 	for (int i = 0; i < siz; ++i)

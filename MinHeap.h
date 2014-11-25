@@ -1,3 +1,9 @@
+/********************************************************************
+Name:       MinHeap.h
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Formal declaration of the minheap class and point struct.
+********************************************************************/
+
 #ifndef MINHEAP_H
 #define MINHEAP_H
 

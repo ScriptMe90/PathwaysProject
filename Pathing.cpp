@@ -1,6 +1,17 @@
+/********************************************************************
+Name: Pathing.cpp
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Implement all methods from Pathing.h
+********************************************************************/
+
 #include "Pathing.h"
 
-
+/********************************************************************
+Name:       Pathing(int n)
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Read in data from a file, and initiate weights, heap, and
+Nodes.
+********************************************************************/
 Pathing::Pathing(int n)
 {
 	string line;
@@ -37,6 +48,11 @@ Pathing::Pathing(int n)
 }
 
 
+/********************************************************************
+Name:       ~Pathing()
+Author(s):  Justin Brumley.
+Purpose:    Acts as the destructor for the Pathing class
+********************************************************************/
 Pathing::~Pathing()
 {
 	for (int i = 0; i < nodeCount; ++i)
@@ -48,6 +64,12 @@ Pathing::~Pathing()
 }
 
 
+/********************************************************************
+Name:       CalculatePath(int pointA, int pointB)
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford
+Purpose:    Calculate the shortest path from the starting node to the
+destination node.
+********************************************************************/
 void Pathing::calculatePath(int pointA, int pointB)
 {
 	//cout << pointB << " ";
@@ -57,14 +79,12 @@ void Pathing::calculatePath(int pointA, int pointB)
 	for (int i = 0; i < nodeCount; ++i)
 	{
 		Point min = heap->removeMin();
-		//cout << "outer i: " << i << endl;
+
 		while (min.visited)  //if the node has already been visited, discard it.
 		{
 			min = heap->removeMin();
 		}
 		min.visited = true;
-
-		//cout << "current min id: " << min.id << " current min dist: " << min.dist << endl;
 
 		for (int j = 0; j < nodeCount; ++j)
 		{
@@ -111,12 +131,23 @@ void Pathing::calculatePath(int pointA, int pointB)
 }	
 
 
+/********************************************************************
+Name:       getPath()
+Author(s):  Justin Brumley
+Purpose:    Returns the shortest path.
+********************************************************************/
 vector<int>& Pathing::getPath()
 {
 	return shortest;
 }
 
 
+/********************************************************************
+Name:       diplayPathing()
+Author(s):  Cory Feliciano, Joshua Ford, Justin Brumley
+Purpose:    Outputs the shortest path in terms of the nodes that
+get from point B back to point A in the shortest distance
+********************************************************************/
 void Pathing::displayPath()
 {
 	for (int i = 0; i < shortest.size(); ++i)

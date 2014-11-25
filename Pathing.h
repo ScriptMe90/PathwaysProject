@@ -1,3 +1,9 @@
+/********************************************************************
+Name:       Pathing.h
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Formal definition of the Pathing class.
+********************************************************************/
+
 #ifndef PATHING_H
 #define PATHING_H
 #include <string>

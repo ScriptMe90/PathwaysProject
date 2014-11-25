@@ -1,3 +1,9 @@
+/********************************************************************
+Name:       Pathing.h
+Author(s):  Justin Brumley, Cory Feliciano, Joshua Ford.
+Purpose:    Driver.
+********************************************************************/
+
 #include <iostream>
 #include "Pandemic.h"
 using namespace std;
